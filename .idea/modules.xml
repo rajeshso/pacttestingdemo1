@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/com.n2.my-pacts.consumer.iml" filepath="$PROJECT_DIR$/.idea/modules/com.n2.my-pacts.consumer.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/consumer/com.n2.my-pacts.consumer.main.iml" filepath="$PROJECT_DIR$/.idea/modules/consumer/com.n2.my-pacts.consumer.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/consumer/com.n2.my-pacts.consumer.test.iml" filepath="$PROJECT_DIR$/.idea/modules/consumer/com.n2.my-pacts.consumer.test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/com.n2.my-pacts.pacttestingdemo1.iml" filepath="$PROJECT_DIR$/.idea/modules/com.n2.my-pacts.pacttestingdemo1.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/com.n2.my-pacts.pacttestingdemo1.main.iml" filepath="$PROJECT_DIR$/.idea/modules/com.n2.my-pacts.pacttestingdemo1.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/com.n2.my-pacts.pacttestingdemo1.test.iml" filepath="$PROJECT_DIR$/.idea/modules/com.n2.my-pacts.pacttestingdemo1.test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/com.n2.my-pacts.provider.iml" filepath="$PROJECT_DIR$/.idea/modules/com.n2.my-pacts.provider.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/provider/com.n2.my-pacts.provider.main.iml" filepath="$PROJECT_DIR$/.idea/modules/provider/com.n2.my-pacts.provider.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/provider/com.n2.my-pacts.provider.test.iml" filepath="$PROJECT_DIR$/.idea/modules/provider/com.n2.my-pacts.provider.test.iml" />
+    </modules>
+  </component>
+</project>

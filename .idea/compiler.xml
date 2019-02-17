@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <bytecodeTargetLevel>
+      <module name="com.n2.my-pacts.consumer.main" target="1.8" />
+      <module name="com.n2.my-pacts.consumer.test" target="1.8" />
+      <module name="com.n2.my-pacts.pacttestingdemo1.main" target="1.8" />
+      <module name="com.n2.my-pacts.pacttestingdemo1.test" target="1.8" />
+      <module name="com.n2.my-pacts.provider.main" target="1.8" />
+      <module name="com.n2.my-pacts.provider.test" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+</project>

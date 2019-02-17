@@ -1,0 +1,50 @@
+plugins {
+    id 'java'
+}
+
+group 'com.n2.my-pacts'
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+description = 'provider'
+
+
+dependencies {
+    testCompile project(':provider')
+    testCompile libs.assertJ
+    testCompile libs.junit
+    testCompile libs.wiremock
+    testCompile libs.pactConsumer
+    testCompile 'au.com.dius:pact-jvm-provider-spring_2.12:3.5.24'
+    testImplementation libs.springBootStarterTest
+}
+
+test {
+    systemProperties['pact.rootDir'] = "$buildDir/pacts"
+    systemProperties['pact.verifier.publishResults'] = "true"
+}
+
+//pactPublish.dependsOn(check)
+
+ext.gitRevision = { ->
+    def revision = new ByteArrayOutputStream()
+    exec {
+        commandLine "git", "log", "-n", "1", "--format='%h'"
+        standardOutput = revision
+    }
+    return revision.toString().trim().replaceAll("'","")
+}
+
+//pact {
+//    publish {
+//        pactBrokerUrl = project.pactBrokerUrl
+//        pactBrokerUsername = project.pactBrokerUser
+//        pactBrokerPassword = project.pactBrokerPassword
+//        version = project.version + '-' + gitRevision()
+//    }
+//}
