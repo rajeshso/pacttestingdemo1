@@ -1,9 +1,9 @@
 plugins {
-    id 'java'
+    id "au.com.dius.pact" version "3.5.24"
 }
 
 group 'com.n2.my-pacts'
-
+version = '0.0.1'
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
 
@@ -21,6 +21,7 @@ dependencies {
     testCompile libs.lombok
     testImplementation libs.springBootStarterTest
     testCompile libs.springBootWeb
+    testCompile 'au.com.dius:pact-jvm-provider-spring_2.12:3.5.24'
 
     compileOnly group: 'org.projectlombok', name: 'lombok', version: '1.18.2'
     testCompileOnly group: 'org.projectlombok', name: 'lombok', version: '1.18.2'
@@ -43,13 +44,11 @@ ext.gitRevision = { ->
     return revision.toString().trim().replaceAll("'","")
 }
 
-//pact {
-//    publish {
-//        pactBrokerUrl = project.pactBrokerUrl
-//        pactBrokerUsername = project.pactBrokerUser
-//        pactBrokerPassword = project.pactBrokerPassword
-//        version = project.version + '-' + gitRevision()
-//    }
-//}
-
-// pactPublish.dependsOn(check)
+pact {
+    publish {
+        pactBrokerUrl = project.pactBrokerUrl
+        pactBrokerUsername = project.pactBrokerUser
+        pactBrokerPassword = project.pactBrokerPassword
+        version = project.version + '-' + gitRevision()
+    }
+}

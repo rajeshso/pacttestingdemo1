@@ -1,0 +1,2 @@
+// This line is important for the pact test to run
+rootProject.name = 'pacttestingdemo1'

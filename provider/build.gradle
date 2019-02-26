@@ -1,35 +1,86 @@
-plugins {
-    id 'java'
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:$versions.springBoot")
+    }
 }
 
+plugins {
+    id "com.gorylenko.gradle-git-properties" version "1.5.1"
+    id "au.com.dius.pact" version "3.5.24"
+}
+
+apply plugin: 'jacoco'
+apply plugin: 'org.springframework.boot'
+description = "provider"
+//The group and version are very important
 group 'com.n2.my-pacts'
+version = '0.0.1'
 
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
 
-repositories {
-    mavenCentral()
+configurations {
+    all*.exclude module: 'tomcat-annotations-api'
 }
 
-description = 'provider'
-
-
 dependencies {
-    testCompile project(':provider')
-    testCompile libs.assertJ
-    testCompile libs.junit
-    testCompile libs.wiremock
-    testCompile libs.pactConsumer
+    compile libs.h2
+//    compile libs.liquibase
+    compile libs.springBootJpa
+    compile libs.springBootWeb
+    compile libs.springBootActuator
+    compile libs.logStash
+    compile libs.micrometerCore
+    compile libs.micrometerPrometheus
+    compile libs.springSleuth
+    compile libs.springfoxSwagger2
+    compile libs.springfoxSwaggerUi
+    compile libs.springBootJpa
+    compile libs.tomcatJdbc
+
+    compile(libs.mysql) {
+        exclude group: 'com.google.protobuf'
+    }
+
+    testCompile (libs.springBootStarterTest) {
+        exclude group:'org.mockito'
+    }
+    testCompile libs.powerMockAPI
+    testCompile libs.powerMockJunit
+
+    compileOnly libs.lombok
+    testCompileOnly libs.lombok
+    annotationProcessor libs.lombok
+    testAnnotationProcessor libs.lombok
     testCompile 'au.com.dius:pact-jvm-provider-spring_2.12:3.5.24'
-    testImplementation libs.springBootStarterTest
+
+}
+
+jar {
+    enabled = true
+}
+
+jacoco {
+    toolVersion = "0.8.1"
+    reportsDir = file("$buildDir/reports/jacoco")
+}
+
+jacocoTestReport {
+    reports {
+        xml.enabled true
+        csv.enabled true
+        html.destination file("$buildDir/reports/jacoco/html")
+    }
 }
 
 test {
+    finalizedBy jacocoTestReport
     systemProperties['pact.rootDir'] = "$buildDir/pacts"
     systemProperties['pact.verifier.publishResults'] = "true"
 }
-
-//pactPublish.dependsOn(check)
 
 ext.gitRevision = { ->
     def revision = new ByteArrayOutputStream()
@@ -39,12 +90,3 @@ ext.gitRevision = { ->
     }
     return revision.toString().trim().replaceAll("'","")
 }
-
-//pact {
-//    publish {
-//        pactBrokerUrl = project.pactBrokerUrl
-//        pactBrokerUsername = project.pactBrokerUser
-//        pactBrokerPassword = project.pactBrokerPassword
-//        version = project.version + '-' + gitRevision()
-//    }
-//}

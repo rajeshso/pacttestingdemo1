@@ -1,0 +1,8 @@
+spring.application.name: conversation-manager
+
+pactbroker:
+  host: localhost
+  protocol: http
+  port: 80
+  user:
+  password:

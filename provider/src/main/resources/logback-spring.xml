@@ -28,10 +28,6 @@
     <appender-ref ref="STDOUT"/>
   </logger>
 
-  <logger name="com.amazonaws" level="WARN">
-    <appender-ref ref="STDOUT"/>
-  </logger>
-
   <logger name="jsonLogger" additivity="false" level="INFO">
     <appender-ref ref="STDOUT"/>
   </logger>
